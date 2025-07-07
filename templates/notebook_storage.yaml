@@ -1,0 +1,16 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  annotations:
+    openshift.io/display-name: WORKSPACE_NAME_FIELD-storage
+  name: WORKSPACE_NAME_FIELD-storage
+  labels:
+    opendatahub.io/dashboard: 'true'
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+#  storageClassName: ocs-external-storagecluster-ceph-rbd
+  volumeMode: Filesystem

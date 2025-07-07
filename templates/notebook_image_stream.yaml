@@ -1,0 +1,32 @@
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  annotations:
+    opendatahub.io/notebook-image-creator: admin
+    opendatahub.io/notebook-image-desc: ""
+    opendatahub.io/notebook-image-name: NB_NAME_FIELD
+    opendatahub.io/notebook-image-url: NB_REGISTRY_FIELD/NB_REPO_FIELD/NB_IMAGE_FIELD:NB_TAG_FIELD
+    opendatahub.io/recommended-accelerators: '[]'
+  labels:
+    app.kubernetes.io/created-by: byon
+    opendatahub.io/dashboard: "true"
+    opendatahub.io/notebook-image: "true"
+  name: NB_NAME_FIELD
+  namespace: redhat-ods-applications
+spec:
+  lookupPolicy:
+    local: true
+  tags:
+  - annotations:
+      opendatahub.io/notebook-python-dependencies: '[]'
+      opendatahub.io/notebook-software: '[]'
+      openshift.io/imported-from: NB_REGISTRY_FIELD/NB_REPO_FIELD/NB_IMAGE_FIELD:NB_TAG_FIELD
+    from:
+      kind: DockerImage
+      name: NB_REGISTRY_FIELD/NB_REPO_FIELD/NB_IMAGE_FIELD:NB_TAG_FIELD
+    generation: 2
+    importPolicy:
+      importMode: Legacy
+    name: NB_NAME_FIELD
+    referencePolicy:
+      type: Source
